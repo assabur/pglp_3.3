@@ -1,7 +1,7 @@
 package fr.uvsq.solid.pglp_3;
 
 public class Robot {
-	private int position;
+	protected int position;
 
 	public Robot(int position)
 	{
