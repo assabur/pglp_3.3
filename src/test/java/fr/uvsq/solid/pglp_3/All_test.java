@@ -15,7 +15,10 @@ ArrayList<Robot> monrobot = new ArrayList<Robot>();
 @Before
 public void setup()
 {
-	monrobot.add(mon_robot_statique);
+	mon_robot_1=new RobotType1(20);
+	mon_robot_2=new RobotType2(20);
+	mon_robot_statique=new RobotStatique(20);
+	//monrobot.add(mon_robot_statique);
 	monrobot.add(mon_robot_1);
 	monrobot.add(mon_robot_2);
 }
@@ -25,6 +28,19 @@ public void afficher_test()
 	for (int i =0;i<monrobot.size();i++)
 		monrobot.get(i).avance();
 	for (int i =0;i<monrobot.size();i++)	
-		System.out.println("Robot du type"+(i+1)+" : "+monrobot.get(i).position );
+	System.out.println("Robot du type"+(i+1)+" : "+monrobot.get(i).position );
+	
+	assertTrue(monrobot.get(0).position==30);
+	assertTrue(monrobot.get(1).position==35);
 }
+@Test(expected = UnsupportedOperationException.class)
+public void robotStatiqueTestExceptionGenerer() {
+	mon_robot_statique.avancer(); 
+}
+@Test
+public void robotstatiqueNeBougePas()
+{
+	assertTrue(mon_robot_statique.position==20);
+}
+
 }
